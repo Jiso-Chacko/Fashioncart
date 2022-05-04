@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from 'react'; 
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -6,6 +6,7 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
@@ -15,6 +16,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import './Navbar.css'
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -55,6 +57,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
   },
 }));
+
+const appBar = {
+  backgroundColor: "GREY",
+  boxShadow: "none"
+}
 
 export default function PrimarySearchAppBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -156,7 +163,7 @@ export default function PrimarySearchAppBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" style={appBar}>
         <Toolbar>
           <IconButton
             size="large"
@@ -167,31 +174,39 @@ export default function PrimarySearchAppBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: 'none', sm: 'block' } }}
-          >
-            MUI
-          </Typography>
-          <Search>
-            <SearchIconWrapper>
+          
+          <Search sx={{ border: "1px solid grey" }} className="searchBox"> 
+            <SearchIconWrapper sx={{ color:"black" }}>
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
+              sx={{ color:"black" }}
             />
           </Search>
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ display: { xs: 'none', sm: 'block' } , color:"black",display:"flex", flex:"3", justifyContent:"center"}}
+          >
+            Fashion Cart
+          </Typography>
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="error">
+          <Box sx={{ display: { xs: 'none', md: 'flex', color:"#d8d0d0" } }}>
+              {/* SignIn */}
+              <Typography variant="h5" component="h5" mt={1} mr={1} className="signIn">
+                  SignIn
+                </Typography>
+            <IconButton size="large" aria-label="show 4 new mails" color="inherit" className="cartIcon">
+              {/* <Badge badgeContent={4} color="error">
                 <MailIcon />
-              </Badge>
+              </Badge> */}
+                <AddShoppingCartIcon />
             </IconButton>
-            <IconButton
+            
+            {/* <IconButton
               size="large"
               aria-label="show 17 new notifications"
               color="inherit"
@@ -199,8 +214,9 @@ export default function PrimarySearchAppBar() {
               <Badge badgeContent={17} color="error">
                 <NotificationsIcon />
               </Badge>
-            </IconButton>
-            <IconButton
+            </IconButton> */}
+
+            {/* <IconButton
               size="large"
               edge="end"
               aria-label="account of current user"
@@ -210,7 +226,8 @@ export default function PrimarySearchAppBar() {
               color="inherit"
             >
               <AccountCircle />
-            </IconButton>
+            </IconButton> */}
+
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton

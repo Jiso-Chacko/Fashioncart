@@ -1,0 +1,15 @@
+.signIn:hover{
+    cursor: pointer;
+    color: black;
+    opacity: .6;
+}
+
+.cartIcon:hover{
+    color: black;
+    opacity: .6;
+}
+
+.searchBox:hover{
+    opacity: .6;
+    border: 0px;
+}
